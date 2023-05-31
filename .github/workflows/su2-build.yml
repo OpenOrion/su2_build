@@ -22,7 +22,7 @@ jobs:
     strategy:
       matrix:
         os-version: ["python:3.10-bullseye"]
-        branch: ["develop"]
+        branch: ["develop", "new_turbo_outputs"]
 
     runs-on: ubuntu-latest
     container: ${{ matrix.os-version }}
@@ -39,7 +39,7 @@ jobs:
         run: |
           mkdir su2_build
           cd su2_build
-          git clone --recursive https://github.com/afshawnlotfi/SU2
+          git clone --recursive https://github.com/su2code/SU2
           cd SU2
           git checkout ${{ matrix.branch }}
           ./meson.py build -Denable-pywrapper=true -Dwith-mpi=disabled
